@@ -55,7 +55,7 @@ Task1: "Como usuário, desejo uma calculadora simples. Capaz de somar, subtrair,
 Assumindo que o departamento de UX/UI nos encaminhou um modelo conceitual de acordo com "vieses cognitivos de usabilidade" devemos seguir conforme o rascunho abaixo:
 
 </br>
-    <p style="text-align:center;"><img src="mockup.png" alt="UX/UI - Mockup"></img></p>
+    <p style="text-align:center;"><img src="https://github.com/AlessandroAlmadaLeal/WebCalc/blob/master/mockup.PNG" alt="UX/UI - Mockup"></img></p>
 </br>
 
 O departamento informou inclusíve que as cores das caixar representam elementos diferentes. São eles:
