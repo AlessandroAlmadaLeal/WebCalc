@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!--Folha de estilos personalizada-->
+      <link rel="stylesheet" href="style.css">
+      
+      <title>WebCALC</title>
+   </head>
+   
+   <body>
+        <!--Criando um modelo de contorno para a calculadora-->     
+        <div class="borda">
+         
+        <!--Nome da calculadora-->
+        <nav class="nome"><p>Calculadora</p></nav>
+         
+         <!--Visor da calculadora-->
+         <p><textarea class="visor" cols="15" rows="3" readonly></textarea></p>
+         
+         <!--Os botões do teclado dispostos em tabela-->
+            <p>    
+                <div class="teclado">
+                    <table>
+                        <tr>
+                            <td><button class="n">7</button></td>
+                            <td><button class="n">8</button></td>
+                            <td><button class="n">9</button></td>
+                            <td><button class="c">Cc</button></td>
+                            <td><button class="o">+</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="n">4</button></td>
+                            <td><button class="n">5</button></td>
+                            <td><button class="n">6</button></td>
+                            <td><button class="c">CA</button></td>
+                            <td><button class="o">-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="n">1</button></td>
+                            <td><button class="n">2</button></td>
+                            <td><button class="n">3</button></td>
+                            <td rowspan="2"><button class="z">0</button></td>
+                            <td><button class="o">x</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><button class="eq">=</button></td>
+                            <td><button class="o">/</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </p>
+        </div>
+   </body>
+</html>
