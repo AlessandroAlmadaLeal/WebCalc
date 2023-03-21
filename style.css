@@ -1,0 +1,123 @@
+/* Importando as fontes de uma API free. */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+/* Formatação genérica de todo conteúdo da página - Fontes */
+*{
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 20px;
+}
+
+/* Formatando todo o corpo da página - Cor de fundo */
+body{
+    background: rgb(0,3,36);
+    background: linear-gradient(80deg, rgba(0,3,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+/* A primeira classe do HTML o contorno do elemento e as métricas da calculadora*/
+.borda{
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border: 1px;
+    border-style: solid;
+    border-radius: 15px;
+    width: 400px;
+    background-color:gray;
+}
+
+/* Formatando a região do título da calculadora.*/
+.nome{
+    border: 1px;
+    border-style: solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: black;
+}
+
+/* Formatando o nome da região de título.*/
+.nome p {
+    text-align:center;
+    text-transform: uppercase;
+    color: whitesmoke;
+    text-decoration: solid;
+    font-weight: bold;
+}
+
+/* Propriedades de posicionamento e dimensionamento da região do visor da calculadora.*/
+textarea{
+    text-align:right;
+    resize: none;
+    justify-content: center;
+}
+
+/* Propriedades e dimensional do visor da calculadora*/
+.visor{
+    background-color: rgb(231, 231, 101);
+    width:90%;
+    margin-left: 4%;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+}
+
+/* Propriedades da região do teclado da calculadora.*/
+table{
+    width:90%;
+    margin-left: 5%;
+    justify-content: center;
+}
+
+/* Quanto o teclado vai ocupar do espaço disponível*/
+.teclado{
+    width: 100%;
+}
+
+/* Propriedades dos botões numéricos - UX/UI definiu*/
+.n{
+    background-color: white;
+    color: black;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Propriedades dos botões operativos - UX/UI definiu*/
+.o{
+    background-color: black;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Propriedades dos botões Cc e CA - UX/UI definiu*/
+.c{
+    background-color: green;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Propriedades do botão zero - UX/UI definiu*/
+.z{
+    background-color: red;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+    height: 65px;
+}
+
+/* Propriedades do botão de igualdade - UX/UI definiu*/
+.eq{
+    background-color: blue;
+    color: white;
+    width: 100%;
+}
+
+/* Adicionando recurso visual tactil dos botões em geral*/
+button:active {
+    color: white;
+    background-color: darkslategrey;
+}
+
+
