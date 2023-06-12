@@ -6,7 +6,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!--Folha de estilos personalizada-->
       <link rel="stylesheet" href="style.css">
-      
+      <!--Adicionando o JavaScript-->
+      <script src="script.js"></script>
+      <!--Titulo da aba da página-->
       <title>WebCALC</title>
    </head>
    
@@ -18,36 +20,36 @@
         <nav class="nome"><p>Calculadora</p></nav>
          
          <!--Visor da calculadora-->
-         <p><textarea class="visor" cols="20" rows="3" readonly></textarea></p>
+         <p><textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea></p>
          
          <!--Os botões do teclado dispostos em tabela-->
             <p>    
                 <div class="teclado">
                     <table>
                         <tr>
-                            <td><button class="n">7</button></td>
-                            <td><button class="n">8</button></td>
-                            <td><button class="n">9</button></td>
-                            <td><button class="c">Cc</button></td>
-                            <td><button class="o">+</button></td>
+                            <td><button class="n" onclick="inserir(this)">7</button></td>
+                            <td><button class="n" onclick="inserir(this)">8</button></td>
+                            <td><button class="n" onclick="inserir(this)">9</button></td>
+                            <td><button class="c" onclick="limparTela()">CC</button></td>
+                            <td><button class="o" onclick="inserir(this)">+</button></td>
                         </tr>
                         <tr>
-                            <td><button class="n">4</button></td>
-                            <td><button class="n">5</button></td>
-                            <td><button class="n">6</button></td>
-                            <td><button class="c">CA</button></td>
-                            <td><button class="o">-</button></td>
+                            <td><button class="n" onclick="inserir(this)">4</button></td>
+                            <td><button class="n" onclick="inserir(this)">5</button></td>
+                            <td><button class="n" onclick="inserir(this)">6</button></td>
+                            <td><button class="c" onclick="limparDigito()">CA</button></td>
+                            <td><button class="o" onclick="inserir(this)">-</button></td>
                         </tr>
                         <tr>
-                            <td><button class="n">1</button></td>
-                            <td><button class="n">2</button></td>
-                            <td><button class="n">3</button></td>
-                            <td rowspan="2"><button class="z">0</button></td>
-                            <td><button class="o">x</button></td>
+                            <td><button class="n" onclick="inserir(this)">1</button></td>
+                            <td><button class="n" onclick="inserir(this)">2</button></td>
+                            <td><button class="n" onclick="inserir(this)">3</button></td>
+                            <td rowspan="2"><button class="z" onclick="inserir(this)">0</button></td>
+                            <td><button class="o" onclick="inserir(this)">x</button></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><button class="eq">=</button></td>
-                            <td><button class="o">/</button></td>
+                            <td colspan="3"><button class="eq" onclick="calcular()">=</button></td>
+                            <td><button class="o" onclick="inserir(this)">/</button></td>
                         </tr>
                     </table>
                 </div>

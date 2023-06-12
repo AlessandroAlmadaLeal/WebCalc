@@ -47,7 +47,10 @@ body{
 
 /* Propriedades de posicionamento e dimensionamento da região do visor da calculadora.*/
 textarea{
+    color:gray;
+    font-weight: 600;
     text-align:right;
+    font-size: 25px;
     resize: none;
     justify-content: center;
 }
@@ -56,6 +59,7 @@ textarea{
 .visor{
     background-color: rgb(231, 231, 101);
     width:90%;
+    padding: 5px;
     margin-left: 4%;
     border-radius: 5px;
     border-style: solid;
