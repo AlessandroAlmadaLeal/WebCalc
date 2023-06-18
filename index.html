@@ -1,59 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+   
    <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!--Folha de estilos personalizada-->
+      <!-- Folha de estilos personalizada -->
       <link rel="stylesheet" href="style.css">
-      <!--Adicionando o JavaScript-->
+      <!-- Adicionando o JavaScript -->
       <script src="script.js"></script>
-      <!--Titulo da aba da página-->
+      <!-- Título da aba da página -->
       <title>WebCALC</title>
    </head>
    
    <body>
-        <!--Criando um modelo de contorno para a calculadora-->     
+      <!-- Criando um modelo de contorno para a calculadora -->
         <div class="borda">
-         
-        <!--Nome da calculadora-->
-        <nav class="nome"><p>Calculadora</p></nav>
-         
-         <!--Visor da calculadora-->
-         <p><textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea></p>
-         
-         <!--Os botões do teclado dispostos em tabela-->
-            <p>    
-                <div class="teclado">
-                    <table>
-                        <tr>
-                            <td><button class="n" onclick="inserir(this)">7</button></td>
-                            <td><button class="n" onclick="inserir(this)">8</button></td>
-                            <td><button class="n" onclick="inserir(this)">9</button></td>
-                            <td><button class="c" onclick="limparTela()">CC</button></td>
-                            <td><button class="o" onclick="inserir(this)">+</button></td>
-                        </tr>
-                        <tr>
-                            <td><button class="n" onclick="inserir(this)">4</button></td>
-                            <td><button class="n" onclick="inserir(this)">5</button></td>
-                            <td><button class="n" onclick="inserir(this)">6</button></td>
-                            <td><button class="c" onclick="limparDigito()">CA</button></td>
-                            <td><button class="o" onclick="inserir(this)">-</button></td>
-                        </tr>
-                        <tr>
-                            <td><button class="n" onclick="inserir(this)">1</button></td>
-                            <td><button class="n" onclick="inserir(this)">2</button></td>
-                            <td><button class="n" onclick="inserir(this)">3</button></td>
-                            <td rowspan="2"><button class="z" onclick="inserir(this)">0</button></td>
-                            <td><button class="o" onclick="inserir(this)">x</button></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"><button class="eq" onclick="calcular()">=</button></td>
-                            <td><button class="o" onclick="inserir(this)">/</button></td>
-                        </tr>
-                    </table>
-                </div>
-            </p>
+            <!-- Nome da calculadora -->
+            <header class="nome">
+                <h1>Calculadora</h1>
+            </header>
+            
+            <!-- Visor da calculadora -->
+            <div class="visor">
+                <textarea id="tela" class="tela" cols="25" rows="2" placeholder="_" readonly></textarea>
+            </div>            
+            
+            <div class="teclado">
+                <section class="numeros">
+                    <!-- Contexto dos botões numéricos -->
+                    <article class="contexto-numeros">
+                        <button class="n" onclick="inserir(this)">7</button>
+                        <button class="n" onclick="inserir(this)">8</button>
+                        <button class="n" onclick="inserir(this)">9</button>
+                        <button class="n" onclick="inserir(this)">4</button>
+                        <button class="n" onclick="inserir(this)">5</button>
+                        <button class="n" onclick="inserir(this)">6</button>
+                        <button class="n" onclick="inserir(this)">1</button>
+                        <button class="n" onclick="inserir(this)">2</button>
+                        <button class="n" onclick="inserir(this)">3</button>
+                        <!-- Ainda que fora de contexto este botão será mantido aqui em função do layout -->
+                        <button class="eq" onclick="calcular()">=</button>
+                    </article>
+                </section>
+
+                <section class="comandos">
+                    <!-- Comandos para limpar tela ou limpar digito-->
+                    <article class="contexto-comandos">
+                        <button class="c" onclick="limparTela()">CC</button>
+                        <button class="c" onclick="limparDigito()">CA</button>
+                        <!-- Ainda que fora de contexto este botão será mantido aqui em função do layout -->
+                        <button class="z" onclick="inserir(this)">0</button>
+                    </article>
+                </section>
+
+                <section class="operadores">
+                    <!-- Contexto dos operadores -->
+                    <article class="contexto-operadores">
+                        <button class="o" onclick="inserir(this)">+</button>
+                        <button class="o" onclick="inserir(this)">-</button>
+                        <button class="o" onclick="inserir(this)">x</button>
+                        <button class="o" onclick="inserir(this)">/</button>
+                    </article>
+                </section>
+            </div>
         </div>
-   </body>
+    </body>    
+        
+    <footer>
+        <div class="nota">
+            <h1>Desenvolvido por:</h1>
+            <p>Alessandro Almada Leal</p>
+            <p>alessandro.aleh42@gmail.com</p>
+        </div>
+    </footer>
+   
 </html>
