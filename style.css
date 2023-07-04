@@ -51,12 +51,12 @@ textarea{
     /*Atributos de forma, geometria e posicionamento*/
     width:95%;
     padding: 5px;
-    margin: 1%;
+    margin: 5px;
     border-radius: 5px;
     border-style: solid;
-    
-    /*Atributos de texto*/
     justify-content: center;
+
+    /*Atributos de texto*/
     text-align:right;
     font-weight: 600;
     font-size: 25px;
@@ -84,33 +84,42 @@ section{
     flex: 1 0 10%;
 }
 
-/*A primeira seção de contexto possui o dobro do tamanho das outras */
-.numeros{
+/* A primeira seção de contexto possui o dobro do tamanho das demais */
+.coluna-1{
     flex: 2 0 50%; 
 }
 
-/* Formatando os números em estrutura tabular de 3 linhas por 3 colunas - UX / UI definiu*/
-.contexto-numeros{
+/* Formatando os coluna 1 em estrutura tabular de 4 linhas por 3 colunas - UX / UI definiu*/
+.contexto-coluna-1{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr); 
-    gap: 2px;
-}
-
-/* Formatando os comandos em estrutura tabular de 4 linhas por 1 coluna - UX / UI definiu*/
-.contexto-comandos{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(4, 1fr); 
     gap: 2px;
 }
 
-/* Formatando os comandos em estrutura tabular de 4 linhas por 1 coluna - UX / UI definiu*/
-.contexto-operadores{
+/* Formatando os coluna 2 em estrutura tabular de 4 linhas por 1 coluna - UX / UI definiu*/
+.contexto-coluna-2{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(4, 1fr); 
+    grid-template-rows: repeat(5, 1fr); 
     gap: 2px;
+}
+
+/* Formatando coluna 3 em estrutura tabular de 4 linhas por 1 coluna - UX / UI definiu*/
+.contexto-coluna-3{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 1fr); 
+    gap: 2px;
+}
+
+
+/* Propriedades dos botões adicionais - PO negociou*/
+.a{ 
+    width: 100%;
+    background-color: yellow;
+    color: black;
+    border-radius: 5px;
 }
 
 /* Propriedades dos botões numéricos - UX/UI definiu*/
@@ -147,6 +156,7 @@ section{
     grid-column: span 3; 
     background-color: blue;
     color: white;
+    border-radius: 5px;
 }
 
 /* Adicionando recurso visual tactil dos botões em geral*/

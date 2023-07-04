@@ -110,6 +110,60 @@ Não deixe de observar as documentações e os e-mails de requisição.
 <dd> ATV07.003 - Deploy em PRD - Call.
 </ul>
 
+## Sobre as melhorias:
+
+Neste ponto do projeto ocorre que o cliente solicitou algumas mudanças no escopo, que não foram contempladas no debate inicial.
+
+Isso comprometeu o bom andamento da sprint agregando mais atividades com um prazo de entrega que, até então era otimo, mas agora se tornou critico.
+
+Abaixo estão listadas as necessidades que ficaram de fora no primeiro alinhamento:
+
+<ul>
+<li> O botão de exponênciação: Permite elevar o número a uma determinada potência.</li>
+<li> O botão de abertura e fechamento de parênteses: Para ordenar operações em casos complexos;</li>
+<li> O botão de porcentagem: Que permite calcular o percentual de um determinado valor;</li>
+<li> O botão virgula: Que permite a entrada de números decimais.</li>
+</ul>
+
+Além disso é importante lembrar que a estrutura deve estar de acordo com as tecnologias de estruturação de página do HTML 5. Todo recurso de apoio que não esteja alinhado com essas premissas necessita ser corrigido (claro que essas correções geram impacto no CSS e por consequencia também precisa se alinhar ao estilo padrão).
+
+No call de alinhamento feito com o cliente, nosso "product owner" aproveitou para negociar os estilos e o posicionamento desses novos botões. 
+
+Esta ação foi mais para evitar custos adicionais não previstos no budget inicial e evitar estourar o cronograma de entrega, neste caso removendo uma etapa do processo (gestores costumam tomar essas decisões fora da caixa). Ele alinhou com o departamento de UX/UI as decisões negociadas como "desejo de estilização do cliente". 
+
+O PO informou que:
+
+<code>
+A maioria desses botões devem possuir uma lógica de coloração diferente dos demais, detalhando mais o caso, eles devem ser de coloração amarela com caracteres pretos em seu interior. 
+
+Porém uma há uma exceção para o botão de exponênciação, que seguirá a logica de estilização dos operadores e deve ser alocado na mesma coluna. 
+
+Outra excessão se aplica ao botão de virgula, ele deve possuir o mesmo estilo dos botões numericos e sua localização deve ser acima botão zero e abaixo dos botões de CC e CA. 
+
+Os demais devem ocupar a primeira linha, logo abaixo da tela da calculadora, e devem ser dispostos seguindo a distribuição das colunas atuais.
+</code>
+
+Dificil de entender? Relaxa era para ser, isso é um cenário de correria em simulação e nesse caso nem tudo vem bem especificado.
+
+Logo, temos cinco botões a adicionar. São eles:
+
+<ul>
+<li> Parenteses esquerdo "(";</li>
+<li> Parenteses direito ")";</li>
+<li> Porcentagem "%";</li>
+<li> Exponenciação "x^<sup>n</sup>".</li>
+</ul>
+
+Sobre as regras de validação é importante destacar que:
+<ul>
+<li> Apenas "abertura de parenteses" pode ser digitado sem que nada tenha sido inserido na calculadora previamente (momento de tela limpa);</li>
+<li> Nenhum parenteses de fechamento pode ser digitado sem que exista um respectivo parênteses de abertura;</li>
+<li> Porcentagem requer que ao menos um número tenha sido digitado previamente (este será o indicador do percentual), nada foi apontado quanto à exibição na tela;</li>
+<li> A exponênciação necessita ser exibida em tela na seguinte forma "x ^ n".</li>
+</ul>
+Dito isso, mãos a obra com as melhorias.
+
+
 ## E acabamos por aqui:
 
 Este projeto servirá de portifólio, atividade para demonstrar ao mercado a capacidade de desenvolvimento neste ambiente pessoas podem colaborar, abrindo tickets de "issues", ou ate mesmo implementando melhorias com detalhamento documentado. Fica aqui o convite para todo aquele que desejar colaborar com o aprendizado e fazer parte da jornada.

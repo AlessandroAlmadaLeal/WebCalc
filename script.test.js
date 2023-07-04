@@ -1,22 +1,40 @@
 
 const {
   exibindoResultado,
+  contaParenteses,
   controleTela,
+  controlarParenteses,
   manipularTela,
+  consultarElementos, 
   inserir,
-  limparTela,
+  percentual,
+  virgula,
+  possuiVirgula,
+  truncarNumero,
+  mascara,
+  limparTela, 
   limparDigito,
-  operador,
-  mdas,
-  substituir,
+  operador, 
+  pmdas, 
+  substituirElementos, 
   parseNPR,
-  calcular,
+  calcular
 } = require('./script.js');
 
 describe('\nTESTE DA FUNÇÃO | controleTela:', () => {
   test('Deve manipular a variável global exibindoResultado.', () => {
     expect(controleTela(true)).toBe(true);
     expect(controleTela(false)).toBe(false);
+  });
+});
+
+describe ('\nTESTE DA FUNÇÃO | controlarParenteses:', () => {
+  test('Deve manipular a variável global contaParenteses.', () => {
+    expect(controlarParenteses(true)).toEqual(1);
+    expect(controlarParenteses(false)).toEqual(0);
+    expect(controlarParenteses(true)).toEqual(1);
+    expect(controlarParenteses(true)).toEqual(2);
+    expect(controlarParenteses(null)).toEqual(0);
   });
 });
 
@@ -82,6 +100,27 @@ describe('\nTESTE DA FUNÇÃO | manipularTela:', () => {
   });
 });
 
+describe('\nTESTE DA FUNÇÃO | consultarElementos:', () => {
+  beforeEach(() => {
+    // Configuração inicial
+    document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
+  });
+
+  test('Deve retornar o tamanho da lista de elementos quando o argumento for "c"', () => {
+    document.getElementById('tela').value = 1234;
+    expect(consultarElementos('c')).toBe(1);
+    document.getElementById('tela').value = "123 + 12";
+    expect(consultarElementos('c')).toBe(3);
+  });
+
+  test('Deve retornar o último elemento da lista quando o argumento for "u"', () => {
+    document.getElementById('tela').value = 1234;
+    expect(consultarElementos('u')).toBe('1234');
+    document.getElementById('tela').value = "123 + 12";
+    expect(consultarElementos('u')).toBe('12');
+  });
+});
+
 describe('\nTESTE DA FUNÇÃO | inserir:', () => {
   beforeEach(() => {
     // Configuração inicial
@@ -130,7 +169,127 @@ describe('\nTESTE DA FUNÇÃO | inserir:', () => {
   });
 });
 
-describe('\nTESTE DA FUNÇÃO | limparTela', () => {
+describe('\nTESTE DA FUNÇÃO | percentual:', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
+  });
+
+  test("Deve transformar um números precedentes em notação percentual.", () => {
+    for (var i = 1; i < 100; i++) {
+      var notacao = toString((i / 100).toFixed(2)) + ' x ';
+      document.getElementById('tela').value = i;
+      expect(percentual()).toBe(notacao);
+      document.getElementById('tela').value = '';
+    }
+  });
+});
+
+describe('\nTESTE DA FUNÇÃO | virgula:', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
+  });
+
+  test('Deve adicionar "0." na tela quando não há elementos', () => {
+    virgula();
+    expect(document.getElementById('tela').value).toBe('0.');
+  });
+
+  test('Deve adicionar "." na tela se o último elemento for um número.', () => {
+    document.getElementById('tela').value = '12';
+    virgula();
+    expect(document.getElementById('tela').value).toBe('12.');
+  });
+
+  test('Deve adicionar zero e vírgula se o último elemento é um operador', () => {
+    document.getElementById('tela').value = '12 + '; 
+    virgula();
+    expect(document.getElementById('tela').value).toBe('12 + 0.');
+  });
+
+  test('Deve adicionar zero e vírgula se o último elemento é um parêntese de abertura', () => {
+    document.getElementById('tela').value = '(';
+    virgula();
+    expect(document.getElementById('tela').value).toBe('(0.');
+  });
+
+  test('Não deve adicionar vírgula se o último elemento já possui uma vírgula', () => {
+    document.getElementById('tela').value = '12.5';
+    virgula();
+    expect(document.getElementById('tela').value).toBe('12.5');
+  });
+});
+
+describe('\nTESTE DA FUNÇÃO | possuiVirgula:', () => {
+  test('Deve retornar true para argumentos com vírgula decimal.', () => {
+    expect(possuiVirgula('3.14')).toBe(true);
+    expect(possuiVirgula('2.2')).toBe(true);
+    expect(possuiVirgula('0.5')).toBe(true);
+    expect(possuiVirgula('10.1')).toBe(true);
+  });
+
+  test('Deve retornar false para argumentos sem vírgula decimal.', () => {
+    expect(possuiVirgula('5')).toBe(false);
+    expect(possuiVirgula('7')).toBe(false);
+    expect(possuiVirgula('0')).toBe(false);
+  });
+
+  test('Deve retornar false para argumentos não numéricos.', () => {
+    expect(possuiVirgula('abc')).toBe(false);
+    expect(possuiVirgula('1a')).toBe(false);
+    expect(possuiVirgula('3.14a')).toBe(false);
+    expect(possuiVirgula('2,5')).toBe(false);
+  });
+});
+
+describe('\nTESTE DA FUNÇÃO | truncarNumero:', () => {
+  test('Deve truncar corretamente o número com 4 casas decimais.', () => {
+    expect(truncarNumero(3.14159265359)).toBe(3.1415);
+    expect(truncarNumero(2.71828)).toBe(2.7182);
+    expect(truncarNumero(1.23456789)).toBe(1.2345);
+    expect(truncarNumero(0.123456789)).toBe(0.1234);
+    expect(truncarNumero(10)).toBe(10);
+  });
+
+  test('Deve retornar 0 para números menores que 0.00005.', () => {
+    expect(truncarNumero(0.00004)).toBe(0);
+    expect(truncarNumero(0.00005)).toBe(0);
+    expect(truncarNumero(-0.00004)).toBe(0);
+    expect(truncarNumero(-0.00005)).toBe(0);
+    expect(truncarNumero(-0.00006)).toBe(0);
+  });
+
+  test('Deve retornar NaN para valores não numéricos.', () => {
+    expect(truncarNumero('abc')).toBeNaN();
+    expect(truncarNumero(true)).toBeNaN();
+    expect(truncarNumero(null)).toBeNaN();
+    expect(truncarNumero(undefined)).toBeNaN();
+  });
+});
+
+describe('\nTESTE DA FUNÇÃO | mascara:', () => {
+  test('Deve retornar o número formatado com a máscara correta', () => {
+    // Números com casas decimais e maior que 999 devem ser formatados
+    expect(mascara(1234.5678)).toBe('1,234.5678');
+    expect(mascara(9876.54321)).toBe('9,876.5432');
+    expect(mascara(1234567.89)).toBe('1,234,567.89');
+
+    // Números inteiros maiores que 999 devem ser formatados
+    expect(mascara(1000)).toBe('1,000.00');
+    expect(mascara(10000)).toBe('10,000.00');
+    expect(mascara(1000000)).toBe('1,000,000.00');
+
+    // Números menores que 999 ou sem casas decimais não devem ser formatados
+    expect(mascara(123)).toBe(123);
+    expect(mascara(500)).toBe(500);
+    expect(mascara(999)).toBe(999);
+    expect(mascara(100)).toBe(100);
+    expect(mascara(10)).toBe(10);
+    expect(mascara(0)).toBe(0);
+  });
+});
+
+
+describe('\nTESTE DA FUNÇÃO | limparTela:', () => {
   beforeEach(() => {
     document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
   });
@@ -149,7 +308,7 @@ describe('\nTESTE DA FUNÇÃO | limparTela', () => {
   });
 });
 
-describe('\nTESTE DA FUNÇÃO | limparDigito', () => {
+describe('\nTESTE DA FUNÇÃO | limparDigito:', () => {
   beforeEach(() => {
     document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
   });
@@ -191,51 +350,51 @@ describe('\nTESTE DA FUNÇÃO | operador:', () => {
   });
 });
 
-describe('\nTESTE DA FUNÇÃO | mdas:', () => {
+describe('\nTESTE DA FUNÇÃO | pmdas:', () => {
   test('Deve retornar 1 quando receber ";" no parâmetro precedente.', () => {
-    expect(mdas(';')).toBe(1);
+    expect(pmdas(';')).toBe(1);
   });
 
   test('Deve retornar 2 quando receber "+" ou "-" no parâmetro precedente.', () => {
-    expect(mdas('+')).toBe(2);
-    expect(mdas('-')).toBe(2);
+    expect(pmdas('+')).toBe(2);
+    expect(pmdas('-')).toBe(2);
   });
 
   test('Deve retornar 3 quando receber "/" ou "x" no parâmetro precedente.', () => {
-    expect(mdas('/')).toBe(3);
-    expect(mdas('x')).toBe(3);
+    expect(pmdas('/')).toBe(3);
+    expect(pmdas('x')).toBe(3);
   });
 
   test('Deve retornar 0 para qualquer outro valor no parâmetro precedente.', () => {
-    expect(mdas('(')).toBe(0);
-    expect(mdas(')')).toBe(0);
-    expect(mdas('123')).toBe(0);
+    expect(pmdas('(')).toBe(0);
+    expect(pmdas(')')).toBe(0);
+    expect(pmdas('123')).toBe(0);
   });
 });
 
-describe('\nTESTE DA FUNÇÃO | substituir:', () => {
+describe('\nTESTE DA FUNÇÃO | substituirElementos:', () => {
   test('Deve substituir corretamente o operador "+" na string', () => {
-    expect(substituir('2 + 3')).toEqual(['2', '+', '3']);
+    expect(substituirElementos('2 + 3')).toEqual(['2', '+', '3']);
   });
 
   test('Deve substituir corretamente o operador "-" na string', () => {
-    expect(substituir('5 - 2')).toEqual(['5', '-', '2']);
+    expect(substituirElementos('5 - 2')).toEqual(['5', '-', '2']);
   });
 
   test('Deve substituir corretamente o operador "x" na string', () => {
-    expect(substituir('4 x 2')).toEqual(['4', 'x', '2']);
+    expect(substituirElementos('4 x 2')).toEqual(['4', 'x', '2']);
   });
 
   test('Deve substituir corretamente o operador "/" na string', () => {
-    expect(substituir('10 / 5')).toEqual(['10', '/', '5']);
+    expect(substituirElementos('10 / 5')).toEqual(['10', '/', '5']);
   });
 
   test('Deve operar corretamente com espaços opcionais ao redor dos operadores', () => {
-    expect(substituir('3+4-5 x 2 / 3')).toEqual(['3', '+', '4', '-', '5', 'x', '2', '/', '3']);
+    expect(substituirElementos('3+4-5 x 2 / 3')).toEqual(['3', '+', '4', '-', '5', 'x', '2', '/', '3']);
   });
 
   test('Deve operar corretamente com múltiplos espaços opcionais entre os operadores.', () => {
-    expect(substituir('1    +     2')).toEqual(['1', '+', '2']);
+    expect(substituirElementos('1    +     2')).toEqual(['1', '+', '2']);
   });
 });
 
@@ -253,6 +412,19 @@ describe('\nTESTE DA FUNÇÃO | parseNPR:', () => {
     const resultadoEsperado = ['5', '4', 'x', '3', '+', '2', '1', '/', '-', '1', '+'];
     expect(parseNPR(expressaoInfixa)).toEqual(resultadoEsperado);
   });
+
+  test('Deve converter corretamente expressões com uso de parênteses.', () => {
+    const expressaoInfixa = ['(', '8', '+', '2', ')', 'x', '3'];
+    const resultadoEsperado = ['8', '2', '+', '3', 'x'];
+    expect(parseNPR(expressaoInfixa)).toEqual(resultadoEsperado);
+  });
+
+  test('Deve converter corretamente expressões com uso de exponenciação.', () => {
+    const expressaoInfixa = ['2', '^', '3', '+', '4'];
+    const resultadoEsperado = ['2', '3', '^', '4', '+'];
+    expect(parseNPR(expressaoInfixa)).toEqual(resultadoEsperado);
+  });
+  
 });
 
 describe('\nTESTE DA FUNÇÃO | calcular:', () => {
@@ -267,5 +439,3 @@ describe('\nTESTE DA FUNÇÃO | calcular:', () => {
     expect(document.getElementById('tela').value).toBe('2 + 2 = \n4');
   });
 });
-
-

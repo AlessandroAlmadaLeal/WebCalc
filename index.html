@@ -27,9 +27,11 @@
             </div>            
             
             <div class="teclado">
-                <section class="numeros">
-                    <!-- Contexto dos botões numéricos -->
-                    <article class="contexto-numeros">
+                <section class="coluna-1">
+                    <article class="contexto-coluna-1">
+                        <button class="a" onclick="inserir(this)">(</button>
+                        <button class="a" onclick="inserir(this)">)</button>
+                        <button class="a" onclick="percetual()">%</button>
                         <button class="n" onclick="inserir(this)">7</button>
                         <button class="n" onclick="inserir(this)">8</button>
                         <button class="n" onclick="inserir(this)">9</button>
@@ -39,24 +41,22 @@
                         <button class="n" onclick="inserir(this)">1</button>
                         <button class="n" onclick="inserir(this)">2</button>
                         <button class="n" onclick="inserir(this)">3</button>
-                        <!-- Ainda que fora de contexto este botão será mantido aqui em função do layout -->
                         <button class="eq" onclick="calcular()">=</button>
                     </article>
                 </section>
 
-                <section class="comandos">
-                    <!-- Comandos para limpar tela ou limpar digito-->
-                    <article class="contexto-comandos">
+                <section class="coluna-2">
+                    <article class="contexto-coluna-2">
                         <button class="c" onclick="limparTela()">CC</button>
                         <button class="c" onclick="limparDigito()">CA</button>
-                        <!-- Ainda que fora de contexto este botão será mantido aqui em função do layout -->
+                        <button class="n" onclick="virgula()">.</button>
                         <button class="z" onclick="inserir(this)">0</button>
                     </article>
                 </section>
 
-                <section class="operadores">
-                    <!-- Contexto dos operadores -->
-                    <article class="contexto-operadores">
+                <section class="coluna-3">
+                    <article class="contexto-coluna-3">
+                        <button class="o" onclick="inserir(this)">^</button>
                         <button class="o" onclick="inserir(this)">+</button>
                         <button class="o" onclick="inserir(this)">-</button>
                         <button class="o" onclick="inserir(this)">x</button>
