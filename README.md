@@ -133,15 +133,7 @@ Esta ação foi mais para evitar custos adicionais não previstos no budget inic
 
 O PO informou que:
 
-<code>
-A maioria desses botões devem possuir uma lógica de coloração diferente dos demais, detalhando mais o caso, eles devem ser de coloração amarela com caracteres pretos em seu interior. 
-
-Porém uma há uma exceção para o botão de exponênciação, que seguirá a logica de estilização dos operadores e deve ser alocado na mesma coluna. 
-
-Outra excessão se aplica ao botão de virgula, ele deve possuir o mesmo estilo dos botões numericos e sua localização deve ser acima botão zero e abaixo dos botões de CC e CA. 
-
-Os demais devem ocupar a primeira linha, logo abaixo da tela da calculadora, e devem ser dispostos seguindo a distribuição das colunas atuais.
-</code>
+<code> A maioria desses botões devem possuir uma lógica de coloração diferente dos demais, detalhando mais o caso, eles devem ser de coloração amarela com caracteres pretos em seu interior. Porém uma há uma exceção para o botão de exponênciação, que seguirá a logica de estilização dos operadores e deve ser alocado na mesma coluna. Outra exceção se aplica ao botão de virgula, ele deve possuir o mesmo estilo dos botões numericos e sua localização deve ser acima botão zero e abaixo dos botões de CC e CA. Os demais devem ocupar a primeira linha, logo abaixo da tela da calculadora, e devem ser dispostos seguindo a distribuição das colunas atuais.</code>
 
 Dificil de entender? Relaxa era para ser, isso é um cenário de correria em simulação e nesse caso nem tudo vem bem especificado.
 
