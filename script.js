@@ -1,3 +1,5 @@
+"use strict";
+
 var exibindoResultado = false;
 var contaParenteses = 0;
 
@@ -294,8 +296,13 @@ function parseNPR(expressaoInfixa) {
     return posfixo;
 }
 
+function validarEntrada(expressao) {
+    const regex = /^[0-9()+\-\x\/\^\%\s.=]+$/;
+    return regex.test(expressao);
+}
+
 function calcular() {
-    var pilhaInicial = manipularTela('R', '1');
+    var pilhaInicial = manipularTela('R',"1");
     var pilhaOperacao = parseNPR(pilhaInicial);
     var pilhaExec = [];
     var memoria = 0.0;
@@ -306,6 +313,11 @@ function calcular() {
     var k = 0;
     if (pilhaInicial == null) {
         limparTela();
+        return;
+    }
+    if (!validarEntrada(pilhaInicial)) {
+        limparTela();
+        alert("Por gentileza, evite injetar caracteres estranhos ai!");
         return;
     }
     if (exibindoResultado == true) {

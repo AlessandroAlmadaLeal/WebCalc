@@ -4,3 +4,4 @@ package.json
 .DS_Store
 .$MockUp.drawio.bkp
 MockUp.drawio
+hash.py

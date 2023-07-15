@@ -5,10 +5,17 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Folha de estilos personalizada -->
-      <link rel="stylesheet" href="style.css">
-      <!-- Adicionando o JavaScript -->
-      <script src="script.js"></script>
+      <!-- Config. Segurança: XSS, CssInjection and JsInjection-->
+      <meta http-equiv="Content-Security-Policy" 
+            content="default-src 'self'; 
+                     script-src 'self'; 
+                     style-src 'self'; 
+                     font-src 'self'; 
+                     img-src 'self'">
+      <!-- Folha de Estilos personalizada e verificada -->
+      <link rel="stylesheet" href="style.css" integrity="sha256-928add6e1d36d6420259e13be228e0edd8bd901ec8070211fb804a3a0cd9ec83">
+      <!-- Adicionando o JavaScript verificado -->
+      <script src="script.js" integrity="sha256-974374e8955a71b03d15801e2e8bfbe568a20fe477357039fd14394e32865534"></script>
       <!-- Título da aba da página -->
       <title>WebCALC</title>
    </head>

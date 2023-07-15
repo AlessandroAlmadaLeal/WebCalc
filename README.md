@@ -5,10 +5,10 @@ Este projeto tem o objetivo de proporcionar prática com as ferramentas WEB mais
     <li> HTML5; </li>
     <li> CSS3;  </li>
     <li> JAVASCRIPT. </li>
-</ul> 
+</ul>
 Tal atividade permite a realização do estudo orientado por projeto permitindo enfrentarmos no nosso cotidiano situações que todo desenvolvedor pode enfrentar durante sua carreira.
 
-Importante destacar que programar não se restringe à dimensão exclusivamente de código, mas tem toda uma vasta gama de habilidades que envolve a profissão, como: 
+Importante destacar que programar não se restringe à dimensão exclusivamente de código, mas tem toda uma vasta gama de habilidades que envolve a profissão, como:
 <ul>
     <li> Metodologia de gerenciamento de projetos: Scrum, programação extrema e demais variedades do agile;</li>
     <li> Gerenciamento de ciclo de vida do software: Git, GitHub, Bitbucket e outras tecnologias;</li>
@@ -18,7 +18,8 @@ Importante destacar que programar não se restringe à dimensão exclusivamente 
 
 Tem muita oportunidade de aprendizado neste nosso laboratório, quando se trata em por a mão na massa hardskill's e softskill's são postos a prova!<br><br>
 
-## Requisitos:
+## Requisitos
+
 Não é necessário saber nada de programação iremos aprender juntos conforme ocorrer as necessidades ao longo do desenvolvimento. Importante lembrar, que força de vontade e dedicação são indispensáveis e muito bem vindos desistir ou falhar não são opções válidas.
 
 Sobre as tecnologias utilizadas no desenvolvimento, necessitamos de:
@@ -30,7 +31,8 @@ Sobre as tecnologias utilizadas no desenvolvimento, necessitamos de:
 </ul>
 Fique de olho para mais necessidades no decorrer do projeto.<br><br>
 
-## Conteúdo:
+## Conteúdo
+
 Nossos encontros semanais irão abordar os assuntos necessários para o desenvolvimento, tais como metodologia, conceito e estratégias de solução.
 
 Além disso nos encontros semanais realizaremos o checkpoint de nossos projetos subindo nossos commits no GitHub com as funcionalidades demandadas da semana. Caso alguma funcionalidade fique de fora esta será discutida na "sprint review" e será realocada para a próxima "sprint".
@@ -47,7 +49,8 @@ Nossas Daily's serão audios de WhatsAPP em função do fator mobilidade, isso p
 </ul>
 <br>
 
-## Plano de atividades:
+## Plano de atividades
+
 Vamos criar uma situação hipotética de projeto onde um determinado usuário te solicita o desenvolvimento da calculadora WEB e de acordo com as solicitações desse usuário vamos criar e modificar o modelo no decorrer de nossos encontros. Vamos adotar o SCRUM como metodologia de projeto e encarar a demanda na seguinte história:
 
 Task1: "Como usuário, desejo uma calculadora simples. Capaz de somar, subtrair, multiplicar e dividir."
@@ -76,8 +79,8 @@ Não deixe de observar as documentações e os e-mails de requisição.
 <br>
 <br>
 
-
 ### Nossos entregaveis para a atividade são:
+
 <br>
 <ul>
 <dt> ATV01 - Modelar a estrutura da página WEB.
@@ -110,7 +113,7 @@ Não deixe de observar as documentações e os e-mails de requisição.
 <dd> ATV07.003 - Deploy em PRD - Call.
 </ul>
 
-## Sobre as melhorias:
+## Sobre as melhorias
 
 Neste ponto do projeto ocorre que o cliente solicitou algumas mudanças no escopo, que não foram contempladas no debate inicial.
 
@@ -127,9 +130,9 @@ Abaixo estão listadas as necessidades que ficaram de fora no primeiro alinhamen
 
 Além disso é importante lembrar que a estrutura deve estar de acordo com as tecnologias de estruturação de página do HTML 5. Todo recurso de apoio que não esteja alinhado com essas premissas necessita ser corrigido (claro que essas correções geram impacto no CSS e por consequencia também precisa se alinhar ao estilo padrão).
 
-No call de alinhamento feito com o cliente, nosso "product owner" aproveitou para negociar os estilos e o posicionamento desses novos botões. 
+No call de alinhamento feito com o cliente, nosso "product owner" aproveitou para negociar os estilos e o posicionamento desses novos botões.
 
-Esta ação foi mais para evitar custos adicionais não previstos no budget inicial e evitar estourar o cronograma de entrega, neste caso removendo uma etapa do processo (gestores costumam tomar essas decisões fora da caixa). Ele alinhou com o departamento de UX/UI as decisões negociadas como "desejo de estilização do cliente". 
+Esta ação foi mais para evitar custos adicionais não previstos no budget inicial e evitar estourar o cronograma de entrega, neste caso removendo uma etapa do processo (gestores costumam tomar essas decisões fora da caixa). Ele alinhou com o departamento de UX/UI as decisões negociadas como "desejo de estilização do cliente".
 
 O PO informou que:
 
@@ -143,7 +146,7 @@ Logo, temos cinco botões a adicionar. São eles:
 <li> Parenteses esquerdo "(";</li>
 <li> Parenteses direito ")";</li>
 <li> Porcentagem "%";</li>
-<li> Exponenciação "x^<sup>n</sup>".</li>
+<li> Exponenciação "^".</li>
 </ul>
 
 Sobre as regras de validação é importante destacar que:
@@ -155,8 +158,7 @@ Sobre as regras de validação é importante destacar que:
 </ul>
 Dito isso, mãos a obra com as melhorias.
 
-
-## E acabamos por aqui:
+## E acabamos por aqui!
 
 Este projeto servirá de portifólio, atividade para demonstrar ao mercado a capacidade de desenvolvimento neste ambiente pessoas podem colaborar, abrindo tickets de "issues", ou ate mesmo implementando melhorias com detalhamento documentado. Fica aqui o convite para todo aquele que desejar colaborar com o aprendizado e fazer parte da jornada.
 
