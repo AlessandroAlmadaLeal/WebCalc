@@ -3,6 +3,51 @@
 var exibindoResultado = false;
 var contaParenteses = 0;
 
+document.addEventListener('DOMContentLoaded', function() {
+    var botoes = document.querySelectorAll('button');
+    botoes.forEach(button => {
+    button.addEventListener('click', () => {
+        var botao = button;
+        var botaoClasse = button.classList.value;
+        switch (botaoClasse) {
+            case 'a':
+                if(botao.textContent == '%'){
+                    percentual();
+                } else {
+                    inserir(botaoValor);
+                }
+            break;
+            case 'n':
+                if(botao.textContent == '.'){
+                    virgula();
+                } else {
+                    inserir(botao);
+                }
+            break;
+            case 'o':
+                inserir(botao);
+            break;
+            case 'z':
+                inserir(botao);
+            break;
+            case 'c':
+                if(botao.textContent == 'CC'){
+                    limparTela();
+                } else {
+                    limparDigito();
+                }
+            break;
+            case 'eq':
+                calcular();
+            break;
+            default:
+                console.log('Erro');
+            break;
+        }
+    });
+    });
+});
+
 function controleTela(argumento) {
     if (argumento == true) {
         exibindoResultado = true;

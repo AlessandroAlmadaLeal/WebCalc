@@ -193,3 +193,19 @@ footer p{
     text-decoration: solid;
 }
 
+/* Adicionando alguma responsividade */
+@media (max-width: 768px) {
+    .borda {
+        width: 270px;
+    }
+
+    .teclado {
+        margin: 5px;
+    }
+
+    textarea {
+        padding: 1px;
+        font-size: 18px;
+    }
+}
+
