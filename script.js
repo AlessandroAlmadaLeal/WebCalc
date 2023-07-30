@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(botao.textContent == '%'){
                     percentual();
                 } else {
-                    inserir(botaoValor);
+                    inserir(botao);
                 }
             break;
             case 'n':
