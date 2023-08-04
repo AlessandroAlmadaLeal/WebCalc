@@ -7,7 +7,6 @@ const {
   manipularTela,
   consultarElementos, 
   inserir,
-  percentual,
   virgula,
   possuiVirgula,
   truncarNumero,
@@ -169,21 +168,6 @@ describe('\nTESTE DA FUNÇÃO | inserir:', () => {
   });
 });
 
-describe('\nTESTE DA FUNÇÃO | percentual:', () => {
-  beforeEach(() => {
-    document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
-  });
-
-  test("Deve transformar um números precedentes em notação percentual.", () => {
-    for (var i = 1; i < 100; i++) {
-      var notacao = toString((i / 100).toFixed(2)) + ' x ';
-      document.getElementById('tela').value = i;
-      expect(percentual()).toBe(notacao);
-      document.getElementById('tela').value = '';
-    }
-  });
-});
-
 describe('\nTESTE DA FUNÇÃO | virgula:', () => {
   beforeEach(() => {
     document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
@@ -259,10 +243,9 @@ describe('\nTESTE DA FUNÇÃO | truncarNumero:', () => {
   });
 
   test('Deve retornar NaN para valores não numéricos.', () => {
-    expect(truncarNumero('abc')).toBeNaN();
-    expect(truncarNumero(true)).toBeNaN();
-    expect(truncarNumero(null)).toBeNaN();
-    expect(truncarNumero(undefined)).toBeNaN();
+    expect(truncarNumero('abc')).toBeUndefined();
+    expect(truncarNumero(null)).toBeUndefined();
+    expect(truncarNumero(undefined)).toBeUndefined();
   });
 });
 
@@ -405,6 +388,9 @@ describe('\nTESTE DA FUNÇÃO | parseNPR:', () => {
 
   test('Deve converter corretamente a expressão na forma posfixa, respeitando a ordem dos operadores.', () => {
     expect(parseNPR(['2', '+', '3', 'x', '4'])).toEqual(['2', '3', '4', 'x', '+']);
+    expect(parseNPR(['5', '+', '8'])).toEqual(['5', '8', '+']);
+    expect(parseNPR(['10', '+', '(', '20', 'x', '30', ')'])).toEqual(['10', '20', '30', 'x', '+']);
+    expect(parseNPR(['(', '5', '+', '3', ')', 'x', '(', '7', '+', '2', ')'])).toEqual(['5', '3', '+', '7', '2', '+', 'x']);
   });
 
   test('Deve converter corretamente expressões mais complexas com muitos operadores.', () => {
@@ -424,7 +410,6 @@ describe('\nTESTE DA FUNÇÃO | parseNPR:', () => {
     const resultadoEsperado = ['2', '3', '^', '4', '+'];
     expect(parseNPR(expressaoInfixa)).toEqual(resultadoEsperado);
   });
-  
 });
 
 describe('\nTESTE DA FUNÇÃO | calcular:', () => {
@@ -432,10 +417,49 @@ describe('\nTESTE DA FUNÇÃO | calcular:', () => {
     document.body.innerHTML = '<textarea id="tela" class="visor" cols="25" rows="2" placeholder="_" readonly></textarea>';
   });
 
-  test('Deve realizar a operação corretamente e exibir o resultado na tela formatado', () => {
+  test('Deve realizar a operação corretamente e exibir o resultado na tela formatado.', () => {
     document.getElementById('tela').value = '2 + 2';
     controleTela(false);
     calcular();
     expect(document.getElementById('tela').value).toBe('2 + 2 = \n4');
+  });
+
+  test('Deve ser capaz de lidar com as operações básicas.', ()=>{
+    document.getElementById('tela').value = '2 + 2';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('2 + 2 = \n4');
+
+    document.getElementById('tela').value = '2 - 2';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('2 - 2 = \n0');
+
+    document.getElementById('tela').value = '2 x 3';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('2 x 3 = \n6');
+
+    document.getElementById('tela').value = '2 ^ 3';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('2 ^ 3 = \n8');
+
+    document.getElementById('tela').value = '2 / 2';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('2 / 2 = \n1');
+
+    document.getElementById('tela').value = '2 % 100';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('2 % 100 = \n2');
+  });
+
+  test('Deve ser capaz de lidar com indeterminações.', () => {
+    document.getElementById('tela').value = '1 / 0';
+    controleTela(false);
+    calcular();
+    expect(document.getElementById('tela').value).toBe('1 / 0 = \n∞');
   });
 });

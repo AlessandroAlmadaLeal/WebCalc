@@ -12,6 +12,7 @@
 body{
     background: rgb(0,3,36);
     background: linear-gradient(80deg, rgba(0,3,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    overflow: hidden;
 }
 
 /* A primeira classe do HTML o contorno do elemento e as métricas da calculadora*/
@@ -145,16 +146,16 @@ section{
 
 /* Propriedades do botão zero - UX/UI definiu*/
 .z{
-    grid-row: span 2; 
-    background-color: red;
+    grid-column: span 3;
+    background-color: blue;
     color: white;
     border-radius: 5px;
 }
 
 /* Propriedades do botão de igualdade - UX/UI definiu*/
 .eq{
-    grid-column: span 3; 
-    background-color: blue;
+    grid-row: span 2; 
+    background-color: red;
     color: white;
     border-radius: 5px;
 }
@@ -167,16 +168,20 @@ button:active {
 
 /* Formatando o rodpé. Inserindo meus dados de contato.*/
 footer{
+    width: 100%;
+    height: 70px;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
 }
 
 .nota{
     text-align: center;
+    justify-content: center;
     line-height: 0.5;
     margin:0;
     padding: 0;
@@ -194,18 +199,43 @@ footer p{
 }
 
 /* Adicionando alguma responsividade */
-@media (max-width: 768px) {
-    .borda {
-        width: 270px;
+@media (max-width: 980px) {
+    
+    *{
+        font-size: 18px;
     }
 
-    .teclado {
-        margin: 5px;
+    .borda {
+        width: 240px;
+    }
+    
+    header{
+        border: 1px;
+        border-style: solid;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-color: black;
+        border-color: black;
     }
 
     textarea {
         padding: 1px;
         font-size: 18px;
     }
+
+    .teclado {
+        margin: 3px;
+        gap: 1px;
+    }
+
+    footer{
+        height: 60px;
+        justify-content: center;
+    }
+
+    footer h1{
+        font-weight: normal;
+    }
+
 }
 

@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 var exibindoResultado = false;
 var contaParenteses = 0;
@@ -11,11 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var botaoClasse = button.classList.value;
         switch (botaoClasse) {
             case 'a':
-                if(botao.textContent == '%'){
-                    percentual();
-                } else {
                     inserir(botao);
-                }
             break;
             case 'n':
                 if(botao.textContent == '.'){
@@ -157,18 +153,6 @@ function inserir(digito) {
     }
 }
 
-function percentual() {
-    if (manipularTela('R', '2') == 0 ||
-        consultarElementos('c') > 1  ||
-        operador(manipularTela('R', '0'))) {
-        return;
-    }
-    var auxiliar = manipularTela('R', '0') / 100;
-    manipularTela('WR', auxiliar);
-    manipularTela('WO', 'x');
-    return toString(auxiliar) + ' x ';
-}
-
 function virgula() {
     var ultimoElemento = consultarElementos('u');
     var qtdElementos = consultarElementos('c');
@@ -196,11 +180,10 @@ function possuiVirgula(argumento) {
 
 function truncarNumero(numero) {
     if(isNaN(numero)   || 
-        numero == true  ||
-        numero == false ||
         numero == null  ||
         numero == undefined){
-        return NaN;
+        limparTela();
+        return;
     }
     var casasDecimais = 4;
     var fatorDeMultiplicacao = 10 ** casasDecimais;
@@ -256,6 +239,7 @@ function operador(elemento) {
     } else if (elemento.toString().slice(-3).replace(/\s/g, '') == '+' ||
         elemento.toString().slice(-3).replace(/\s/g, '') == '-' ||
         elemento.toString().slice(-3).replace(/\s/g, '') == 'x' ||
+        elemento.toString().slice(-3).replace(/\s/g, '') == '%' ||
         elemento.toString().slice(-3).replace(/\s/g, '') == '/' ||
         elemento.toString().slice(-3).replace(/\s/g, '') == '^' ) {
         return true;
@@ -271,7 +255,8 @@ function pmdas(precedente) {
                precedente == '-') {
         return 2;
     } else if (precedente == '/' ||
-               precedente == 'x') {
+               precedente == 'x' ||
+               precedente == '%') {
         return 3;
     } else if (precedente == '^') {
         return 4;
@@ -280,7 +265,7 @@ function pmdas(precedente) {
 }
 
 function substituirElementos(string) {
-    return string.replace(/\s*([+\-x^()/])\s*/g, ',$1,').split(',').filter(element => element.trim() !== '');
+    return string.replace(/\s*([+\-x^%()/])\s*/g, ',$1,').split(',').filter(element => element.trim() !== '');
 }
 
 function parseNPR(expressaoInfixa) {
@@ -403,6 +388,11 @@ function calcular() {
                         j += 2;
                         break;
                     case '/':
+                        if (direita == 0){
+                            manipularTela('WR', manipularTela('R', '1') + " = " + "\n" + "∞");
+                            controleTela(true);
+                            return;
+                        }
                         memoria = truncarNumero(esquerda / direita);
                         while (j != k - 3) {
                             pilhaExec.pop();
@@ -420,6 +410,15 @@ function calcular() {
                         pilhaExec.push(memoria.toString());
                         j += 2;
                         break;
+                        case '%':
+                            memoria = truncarNumero((esquerda)/100 * direita);
+                            while (j != k - 3) {
+                                pilhaExec.pop();
+                                j -= 1;
+                            }
+                            pilhaExec.push(memoria.toString());
+                            j += 2;
+                            break;
                     default:
                         throw new Error(`Sinal de operação inválido: ${pilhaOperacao[i]}`);
                 }
@@ -433,7 +432,7 @@ function calcular() {
     }
 }
 
-/* Descomentar depois para rodar os testes!
+/*
 module.exports = {
     exibindoResultado,
     contaParenteses,
@@ -442,7 +441,6 @@ module.exports = {
     manipularTela,
     consultarElementos, 
     inserir,
-    percentual,
     virgula,
     possuiVirgula,
     truncarNumero,
@@ -454,4 +452,4 @@ module.exports = {
     substituirElementos, 
     parseNPR,
     calcular
-}; */
+};*/
